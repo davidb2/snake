@@ -131,6 +131,7 @@ class Game
                     {
                         Position tempPosition = curr.Location;
                         Orientation tempDirection = curr.Direction;
+
                         curr.Direction = oldDirection;
                         curr.Location = oldPosition;
                         oldPosition = tempPosition;
@@ -163,7 +164,10 @@ class Game
     {
         lock(board)
         {
-            head.Direction = direction;
+            if (!OppositeDirection(direction).Equals(head.Direction))
+            {
+                head.Direction = direction;
+            }
         }
     }
 
@@ -188,6 +192,19 @@ class Game
                 break;
             default:
                 break;
+        }
+    }
+
+    private Orientation OppositeDirection(Orientation o)
+    {
+        switch (o)
+        {
+            case Orientation.Up: return Orientation.Down;
+            case Orientation.Down: return Orientation.Up;
+            case Orientation.Left: return Orientation.Right;
+            case Orientation.Right: return Orientation.Left;
+            case Orientation.None: return Orientation.None;
+            default: throw new ArgumentNullException();
         }
     }
 }
