@@ -68,14 +68,26 @@ class Game
     private void PrintBoard()
     {
         StringBuilder sb = new StringBuilder();
+        for (int col = 0; col < board.GetLength(0) + 2; col++)
+        {
+            sb.Append(". ");
+        }
+        sb.AppendLine();
         for (int row = 0; row < board.GetLength(0); row++)
         {
+            sb.Append(". ");
             for (int col = 0; col < board.GetLength(1); col++)
             {
                 sb.AppendFormat("{0} ", board[row, col]);
             }
+            sb.Append(". ");
             sb.AppendLine();
         }
+        for (int col = 0; col < board.GetLength(0) + 2; col++)
+        {
+            sb.Append(". ");
+        }
+        sb.AppendLine();
         Console.Clear();
         Console.Write(sb);
     }
@@ -111,7 +123,6 @@ class Game
                     tail = newTail;
                     SnakeLength++;
                 }
-            case Orientation.Up: return Orientation.Down;
 
                 ResetBoard();
                 board[food.Location.Row, food.Location.Col] = food;
