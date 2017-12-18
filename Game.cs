@@ -90,7 +90,7 @@ class Game
     {
         while (true)
         {
-            lock(board)
+            lock (board)
             {
                 Position directionPosition = Position.FromOrientation(head.Direction);
                 Position newSnakePosition = Position.Mod(head.Location, directionPosition, Size);
@@ -111,6 +111,7 @@ class Game
                     tail = newTail;
                     SnakeLength++;
                 }
+            case Orientation.Up: return Orientation.Down;
 
                 ResetBoard();
                 board[food.Location.Row, food.Location.Col] = food;
@@ -162,7 +163,7 @@ class Game
 
     private void Move(Orientation direction)
     {
-        lock(board)
+        lock (board)
         {
             if (!OppositeDirection(direction).Equals(head.Direction))
             {
