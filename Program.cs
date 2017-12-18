@@ -17,7 +17,6 @@ class Program
         Console.SetBufferSize((SIZE + PADDING) << 1, SIZE + PADDING);
         Game game = new Game(SIZE);
         game.Play();
-        Console.Write(typeof(string).Assembly.ImageRuntimeVersion);
         while (true)
         {
             game.HandleKeyPress(Console.ReadKey());

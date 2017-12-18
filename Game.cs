@@ -176,7 +176,7 @@ class Game
     {
         lock (board)
         {
-            if (!OppositeDirection(direction).Equals(head.Direction))
+            if (SnakeLength == 1 || !OppositeDirection(direction).Equals(head.Direction))
             {
                 head.Direction = direction;
             }
